@@ -20,8 +20,13 @@ export const NavBar = styled.nav`
 
 export const NavList = styled.ul`
     display: flex;
+    align-items: center;
     gap: 40px;
     list-style: none;
+
+    img{
+        border-radius: 50%;
+    }
 
     a{
         padding: 10px;

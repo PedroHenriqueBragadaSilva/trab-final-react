@@ -7,7 +7,7 @@ export const Home = () => {
 
     return (
         <>
-            <Header />
+            <Header token={token}/>
         </>
     )
 }
