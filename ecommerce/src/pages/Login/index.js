@@ -1,14 +1,17 @@
 import logo from '../../images/logo.png'
 import { Form, MainLogin } from './style'
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import { API } from '../../services/api'
 import { useHistory } from 'react-router-dom'
+import { DataContext } from '../../context/data'
 
 export const Login = () => {
     const [loginData, setLoginData] = useState({
         username:'',
         senha:''
     })
+
+    const {handleSetToken} = useContext(DataContext)
 
     const history = useHistory()
 
@@ -17,8 +20,8 @@ export const Login = () => {
 
         try {
             const response = await API.post('/login', loginData)
-            localStorage.setItem('Authentication', 'Bearer ' + response.headers.authorization)
-            history.push('/')
+            handleSetToken(response.headers.authorization)
+            history.goBack()
         } catch (error) {
             alert('credenciais inválidas')
         }
