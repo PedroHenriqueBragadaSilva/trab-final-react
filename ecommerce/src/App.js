@@ -5,6 +5,7 @@ import { Produtos } from './pages/Produtos';
 import { Cadastro } from './pages/Cadastro'
 import { Login } from './pages/Login'
 import Context from './context/data';
+import { Perfil } from './pages/Perfil';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Route path='/produtos' exact component={Produtos}/>
           <Route path='/cadastro' exact component={Cadastro}/>
           <Route path='/login' exact component={Login}/>
+          <Route path='/perfil' exact component={Perfil}/>
         </Switch>
       </BrowserRouter>
     </Context>

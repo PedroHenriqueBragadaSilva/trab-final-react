@@ -11,6 +11,7 @@ export default function Context(props) {
 
     function handleSetToken(token) {
         setToken(token)
+        
         setRole(JSON.parse(window.atob(token.split('.')[1])).sub.split('-')[2])
         setId(JSON.parse(window.atob(token.split('.')[1])).sub.split('-')[0])
     }
