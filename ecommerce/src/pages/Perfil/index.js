@@ -11,15 +11,17 @@ export const Perfil = () => {
     
     useEffect(() => {
         const getUserData = async () => {
-    
-            try {
-                const response = await API.get(`/${role}/${id}`, {headers: {
-                    Authorization: `Bearer ${token}`
-                }})
-                setData(response.data)
-    
-            } catch (error) {
-                console.log(error.response.status)
+
+            if(id && role && token) {
+                try {
+                    const response = await API.get(`/${role}/${id}`, {headers: {
+                        Authorization: `Bearer ${token}`
+                    }})
+                    setData(response.data)
+        
+                } catch (error) {
+                    console.log(error.response.status)
+                }
             }
         }
         getUserData()
