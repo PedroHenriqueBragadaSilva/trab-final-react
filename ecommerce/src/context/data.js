@@ -12,8 +12,8 @@ export default function Context(props) {
     function handleSetToken(token) {
         setToken(token)
         
-        setRole(JSON.parse(window.atob(token.split('.')[1])).sub.split('-')[2])
-        setId(JSON.parse(window.atob(token.split('.')[1])).sub.split('-')[0])
+        //setRole(JSON.parse(window.atob(token.split('.')[1])).sub.split('-')[2])
+        //setId(JSON.parse(window.atob(token.split('.')[1])).sub.split('-')[0])
     }
 
     useEffect(() => {
@@ -22,10 +22,6 @@ export default function Context(props) {
         }
       }, []);
       
-      useEffect(() => {
-        localStorage.setItem('Authentication', token);
-      }, [token]);
-
     return (
         <DataContext.Provider value={{token, role, id, handleSetToken}}>
             {props.children}

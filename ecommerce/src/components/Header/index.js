@@ -4,12 +4,15 @@ import logo from '../../images/logo.png'
 import carrinho from '../../images/carrinho.jpg'
 import { useContext } from "react"
 import { DataContext } from "../../context/data"
+import { useHistory } from "react-router-dom"
 
 export const Header = () => {
     const {token} = useContext(DataContext)
+    const history = useHistory()
 
     const handleLogout = () => {
         localStorage.clear()
+        history.push('/')
         window.location.reload()
     }
 
