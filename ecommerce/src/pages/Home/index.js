@@ -4,7 +4,7 @@ import { DataContext } from "../../context/data"
 
 export const Home = () => {
     const {token} = useContext(DataContext)
-
+    
     return (
         <>
             <Header token={token}/>

@@ -8,6 +8,11 @@ import { DataContext } from "../../context/data"
 export const Header = () => {
     const {token} = useContext(DataContext)
 
+    const handleLogout = () => {
+        localStorage.clear()
+        window.location.reload()
+    }
+
     return (
         <Head>
             <NavBar>
@@ -18,7 +23,7 @@ export const Header = () => {
                     {!token && <li><Link to='/cadastro'>Cadastro</Link></li>}
                     {!token && <li><Link to={'/login'}>Login</Link></li>}
                     {token && <li><Link to={'/perfil'}>Perfil</Link></li>}
-                    {token && <li><Link to={'/logout'}>Logout</Link></li>}
+                    {token && <li><button onClick={handleLogout}>Logout</button></li>}
                     <li><Link to={'/carrinho'}><img src={carrinho} alt="carrinho" /></Link></li>
                 </NavList>
             </NavBar>

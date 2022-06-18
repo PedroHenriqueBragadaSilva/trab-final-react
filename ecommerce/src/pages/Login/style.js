@@ -1,17 +1,15 @@
 import styled from 'styled-components'
 
-
 export const MainLogin = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 40px;
     flex-wrap: wrap;
+    background-color: #e9e6e6;
 
     width: 100vw;
     height: 100vh;
-
-    background-color: #333333;
 
     img{
         width: 25vw;
@@ -31,7 +29,7 @@ export const Form = styled.form`
     padding: 45px;
     border-radius: 10%;
 
-    background-color: #666666;
+    background-color: #dddddd;
     box-shadow: 0px 10px 40px #00000099;
 
     h1{
@@ -53,6 +51,8 @@ export const Form = styled.form`
         border: none;
         border-radius: 20px;
         padding: .8rem;
+        background-color: #bdb9b9;
+        box-shadow: 0px 5px 10px #00000099;
 
         &:hover{
             background-color: black;
