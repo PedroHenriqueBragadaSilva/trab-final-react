@@ -2,8 +2,9 @@ import { useContext, useEffect, useState } from "react"
 import { DataContext } from "../../context/data"
 import { API } from "../../services/api"
 import { Header } from "../../components/Header"
-import { DelSection, ProfileNav, ProfileSection, ProfileWrapper, SectionWrapper } from "./style"
+import { DelSection, EnderecoButton, EnderecoSection, ProfileNav, ProfileSection, ProfileWrapper, SectionWrapper } from "./style"
 import { useHistory } from "react-router-dom"
+import { Endereco } from "../../components/Endereco"
 
 export const Perfil = () => {
 
@@ -107,9 +108,12 @@ export const Perfil = () => {
                 </div>}
 
                 {section === 1 &&
-                <div>
+                <EnderecoSection>
                     <h1>Enderecos</h1>
-                </div>}
+                    <Endereco cep="43234342"/>
+
+                    <EnderecoButton>Adicionar endereço</EnderecoButton>
+                </EnderecoSection>}
 
                 {section === 2 &&
                 <div>

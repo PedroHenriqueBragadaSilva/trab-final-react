@@ -83,3 +83,20 @@ export const DelSection = styled.div`
         }
     }
 `
+
+export const EnderecoSection = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 50%;
+`
+
+export const EnderecoButton = styled.button`
+    width: 100%;
+    height: 6rem;
+
+    background-color: white;
+    border: 1px solid gray;
+
+    cursor: pointer;
+`
