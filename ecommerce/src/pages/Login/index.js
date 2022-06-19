@@ -22,7 +22,7 @@ export const Login = () => {
             const response = await API.post('/login', loginData)
             handleSetToken(response.headers.authorization)
             localStorage.setItem('Authentication', response.headers.authorization)
-            history.goBack()
+            history.push('/')
         } catch (error) {
             alert('credenciais inválidas')
         }

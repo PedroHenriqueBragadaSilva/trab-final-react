@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 export const ProfileWrapper = styled.div`
     display: flex;
-    justify-content: space-between;
+    justify-content: start;
     gap: 2rem;
     width: 90vw;
     height: 100vh;
@@ -63,4 +63,23 @@ export const SectionWrapper = styled.div`
     display: flex;
     gap: 30px;
     width: 65vw;
+`
+
+export const DelSection = styled.div`
+
+    button{
+        width: 100%;
+        margin-top: 3.6rem;
+        padding: 0.7rem;
+        border: none;
+        border-radius: 20px;
+        background-color: #bdb9b9;
+        box-shadow: 0px 5px 10px #00000099;
+
+        &:hover{
+            background-color: #ff2222;
+            color: white;
+            cursor: pointer;
+        }
+    }
 `

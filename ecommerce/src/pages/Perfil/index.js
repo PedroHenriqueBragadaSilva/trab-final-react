@@ -2,7 +2,8 @@ import { useContext, useEffect, useState } from "react"
 import { DataContext } from "../../context/data"
 import { API } from "../../services/api"
 import { Header } from "../../components/Header"
-import { ProfileNav, ProfileSection, ProfileWrapper, SectionWrapper } from "./style"
+import { DelSection, ProfileNav, ProfileSection, ProfileWrapper, SectionWrapper } from "./style"
+import { useHistory } from "react-router-dom"
 
 export const Perfil = () => {
 
@@ -12,6 +13,8 @@ export const Perfil = () => {
     const [update, setUpdate] = useState()
 
     const [section, setSection] = useState(0)
+
+    const history = useHistory()
 
     
     useEffect(() => {
@@ -32,7 +35,7 @@ export const Perfil = () => {
         getUserData()
     }, [id, role, token])
 
-    const handleSubmit = async (e) => {
+    const handleUpdateSubmit = async (e) => {
         e.preventDefault()
 
         try {
@@ -45,6 +48,23 @@ export const Perfil = () => {
         }
     }
 
+    const handleDeleteSubmit = async (e) => {
+        e.preventDefault()
+
+        try {
+            const response = await API.delete(`/${role}/${id}`, {headers: {
+                Authorization: `Bearer ${token}`
+            }})
+            console.log(response.status)
+        } catch (error) {
+            console.log('erro')
+        }
+
+        history.push('/')
+        localStorage.clear()
+        window.location.reload()
+    }
+
     return (
         <div>
             <Header />
@@ -54,7 +74,7 @@ export const Perfil = () => {
                     <button onClick={() => setSection(0)}>Mnha conta</button>
                     {role === "cliente" && <button onClick={() => setSection(1)}>Enderecos</button>}
                     {role === "cliente" && <button onClick={() => setSection(2)}>Meus pedidos</button>}
-                    <button onClick={() => setSection(3)}>Apagar conta</button>
+                    <button onClick={() => setSection(3)}>Deletar conta</button>
                 </ProfileNav>
 
                 {section === 0 &&
@@ -74,7 +94,7 @@ export const Perfil = () => {
                             <label htmlFor="">Nome</label>
                             <input onChange={(e) => setUpdate({...update, nome: e.target.value})} type="text" placeholder={data?.nome}/>
                         </ProfileSection>
-                        <ProfileSection onSubmit={handleSubmit}>
+                        <ProfileSection onSubmit={handleUpdateSubmit}>
                             <label htmlFor="">CPF</label>
                             <input onChange={(e) => setUpdate({...update, cpf: e.target.value})} type="text" placeholder={data?.cpf}/>
 
@@ -88,6 +108,23 @@ export const Perfil = () => {
                         </ProfileSection>
                     </SectionWrapper>
                 </div>}
+
+                {section === 1 &&
+                <div>
+                    <h1>Enderecos</h1>
+                </div>}
+
+                {section === 2 &&
+                <div>
+                    <h1>Meus pedidos</h1>
+                </div>}
+
+                {section === 3 &&
+                <DelSection>
+                    <h1>Deletar conta</h1>
+                    <p>Todas as informações serão perdidas ao deletar a conta</p>
+                    <button onClick={handleDeleteSubmit}>Deletar</button>
+                </DelSection>}
             </ProfileWrapper>
         </div>
     )
