@@ -97,8 +97,7 @@ export const Perfil = () => {
                 <ProfileNav>
                     <button onClick={() => setSection(0)}>Mnha conta</button>
                     {role === "cliente" && <button onClick={() => setSection(1)}>Enderecos</button>}
-                    {role === "cliente" && <button onClick={() => setSection(3)}>Meus pedidos</button>}
-                    <button onClick={() => setSection(4)}>Deletar conta</button>
+                    <button onClick={() => setSection(3)}>Deletar conta</button>
                 </ProfileNav>
 
                 {section === 0 &&
@@ -137,7 +136,7 @@ export const Perfil = () => {
                 <EnderecoSection>
                     <h1>Enderecos</h1>
 
-                    {data.enderecos.map(endereco => <Endereco key={endereco.id} cep={endereco.cep} onClickDel={() => handleDelEndereco(endereco.id)}/>)}
+                    {data.enderecos.map(endereco => <Endereco key={endereco.id} id={endereco.id} cep={endereco.cep} onClickDel={() => handleDelEndereco(endereco.id)}/>)}
                     <EnderecoButton onClick={() => setSection(2)}>Adicionar endereço</EnderecoButton>
                 </EnderecoSection>}
 
@@ -160,11 +159,6 @@ export const Perfil = () => {
                 </EnderecoSection>}
 
                 {section === 3 &&
-                <div>
-                    <h1>Meus pedidos</h1>
-                </div>}
-
-                {section === 4 &&
                 <DelSection>
                     <h1>Deletar conta</h1>
                     <p>Todas as informações serão perdidas ao deletar a conta</p>
