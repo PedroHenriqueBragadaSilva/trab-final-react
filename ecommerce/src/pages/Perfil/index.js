@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react"
 import { DataContext } from "../../context/data"
 import { API } from "../../services/api"
 import { Header } from "../../components/Header"
-import { DelSection, EnderecoButton, EnderecoSection, ProfileNav, ProfileSection, ProfileWrapper, SectionWrapper } from "./style"
+import { ButtonWrapper, DelSection, EnderecoButton, EnderecoForm, EnderecoSection, ProfileNav, ProfileSection, ProfileWrapper, SectionWrapper } from "./style"
 import { useHistory } from "react-router-dom"
 import { Endereco } from "../../components/Endereco"
 
@@ -10,9 +10,8 @@ export const Perfil = () => {
 
     const {id, role, token} = useContext(DataContext)
     const [data, setData] = useState()
-
     const [update, setUpdate] = useState()
-
+    const [enderecoData, setEnderecoData] = useState()
     const [section, setSection] = useState(0)
 
     const history = useHistory()
@@ -63,6 +62,33 @@ export const Perfil = () => {
         window.location.reload()
     }
 
+    const handleCriaEndereco = async (e) => {
+        e.preventDefault()
+
+        try {
+            await API.post(`/endereco`, enderecoData, {headers: {
+                Authorization: `Bearer ${token}`
+            }})
+        } catch (error) {
+            console.log('erro')
+        }
+
+        window.location.reload()
+    }
+
+    const handleDelEndereco = async (id) => {
+
+        try {
+            await API.delete(`/endereco/${id}`, {headers: {
+                Authorization: `Bearer ${token}`
+            }})
+        } catch (error) {
+            console.log('erro')
+        }
+
+        window.location.reload()
+    }
+
     return (
         <div>
             <Header />
@@ -71,8 +97,8 @@ export const Perfil = () => {
                 <ProfileNav>
                     <button onClick={() => setSection(0)}>Mnha conta</button>
                     {role === "cliente" && <button onClick={() => setSection(1)}>Enderecos</button>}
-                    {role === "cliente" && <button onClick={() => setSection(2)}>Meus pedidos</button>}
-                    <button onClick={() => setSection(3)}>Deletar conta</button>
+                    {role === "cliente" && <button onClick={() => setSection(3)}>Meus pedidos</button>}
+                    <button onClick={() => setSection(4)}>Deletar conta</button>
                 </ProfileNav>
 
                 {section === 0 &&
@@ -110,17 +136,35 @@ export const Perfil = () => {
                 {section === 1 &&
                 <EnderecoSection>
                     <h1>Enderecos</h1>
-                    <Endereco cep="43234342"/>
 
-                    <EnderecoButton>Adicionar endereço</EnderecoButton>
+                    {data.enderecos.map(endereco => <Endereco key={endereco.id} cep={endereco.cep} onClickDel={() => handleDelEndereco(endereco.id)}/>)}
+                    <EnderecoButton onClick={() => setSection(2)}>Adicionar endereço</EnderecoButton>
                 </EnderecoSection>}
 
                 {section === 2 &&
+                <EnderecoSection>
+                    <h1>Enderecos</h1>
+
+                    <EnderecoForm onSubmit={handleCriaEndereco}>
+                        <input onChange={(e) => setEnderecoData({...enderecoData, cep: e.target.value})} type="text" placeholder="CEP"/>
+
+                        <input onChange={(e) => setEnderecoData({...enderecoData, numero: e.target.value})} type="text" placeholder="Número"/>
+                        
+                        <input onChange={(e) => setEnderecoData({...enderecoData, complemento: e.target.value})} type="text" placeholder="Complemento"/>
+
+                        <ButtonWrapper>
+                            <button onClick={() => setSection(1)}>Cancelar</button>
+                            <button type="submit">Adicionar</button>
+                        </ButtonWrapper>
+                    </EnderecoForm>
+                </EnderecoSection>}
+
+                {section === 3 &&
                 <div>
                     <h1>Meus pedidos</h1>
                 </div>}
 
-                {section === 3 &&
+                {section === 4 &&
                 <DelSection>
                     <h1>Deletar conta</h1>
                     <p>Todas as informações serão perdidas ao deletar a conta</p>

@@ -9,8 +9,8 @@ export const Endereco = (props) => {
             </div>
 
             <div>
-                <button>Editar</button>
-                <button>Excluir</button>
+                <button onClick={props.onClickEdit}>Editar</button>
+                <button onClick={props.onClickDel}>Excluir</button>
             </div>
         </Wrapper>
     )
