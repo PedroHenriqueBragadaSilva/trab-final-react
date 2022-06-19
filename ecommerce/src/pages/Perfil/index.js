@@ -11,6 +11,8 @@ export const Perfil = () => {
 
     const [update, setUpdate] = useState()
 
+    const [section, setSection] = useState(0)
+
     
     useEffect(() => {
         const getUserData = async () => {
@@ -49,14 +51,15 @@ export const Perfil = () => {
             
             <ProfileWrapper>
                 <ProfileNav>
-                    <button>Mnha conta</button>
-                    <button>Enderecos</button>
-                    <button>Meus pedidos</button>
-                    <button>Apagar conta</button>
+                    <button onClick={() => setSection(0)}>Mnha conta</button>
+                    {role === "cliente" && <button onClick={() => setSection(1)}>Enderecos</button>}
+                    {role === "cliente" && <button onClick={() => setSection(2)}>Meus pedidos</button>}
+                    <button onClick={() => setSection(3)}>Apagar conta</button>
                 </ProfileNav>
 
+                {section === 0 &&
                 <div>
-                <h1>Minha Conta</h1>
+                    <h1>Minha Conta</h1>
                     <SectionWrapper>
                         <ProfileSection>
                             <label htmlFor="">Username</label>
@@ -84,7 +87,7 @@ export const Perfil = () => {
                             <button type="submit">Atualizar</button>
                         </ProfileSection>
                     </SectionWrapper>
-                </div>
+                </div>}
             </ProfileWrapper>
         </div>
     )
