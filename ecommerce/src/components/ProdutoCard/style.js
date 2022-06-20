@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const Card = styled.div`
   width: 100px;
+  height: 220px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -18,7 +19,6 @@ export const CardBody = styled.div`
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  height: 100%;
 `;
 
 export const CardItem = styled.div`
@@ -28,8 +28,9 @@ export const CardItem = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+
   img{
-    width: 100px;
+    width: 100%;
   }
   `;
 

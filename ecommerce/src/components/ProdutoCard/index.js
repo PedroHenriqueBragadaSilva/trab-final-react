@@ -1,6 +1,6 @@
 import { Card as CardContainer, CardBody, CardItem, CardTitle } from "./style";
 
-const Card = ({ imagem, nome, preco }) => {
+export const ProdutoCard = ({ imagem, nome, preco }) => {
   return (
     <CardContainer>
       <CardBody>
@@ -13,5 +13,3 @@ const Card = ({ imagem, nome, preco }) => {
     </CardContainer>
   );
 };
-
-export {Card};
