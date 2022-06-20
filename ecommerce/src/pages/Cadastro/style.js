@@ -60,3 +60,12 @@ export const ButtonWrapper = styled.div`
         flex-grow: 1;
     }
 `
+
+export const ErrorMsg = styled.div`
+    text-align: center;
+
+    background-color: #ff404080;
+    border-radius: 20px;
+    padding: 0px 60px;
+    margin-bottom: 10px;
+`

@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react"
 import { DataContext } from "../../context/data"
 import { API } from "../../services/api"
 import { Header } from "../../components/Header"
-import { ButtonWrapper, DelSection, EnderecoButton, EnderecoForm, EnderecoSection, ProfileNav, ProfileSection, ProfileWrapper, SectionWrapper } from "./style"
+import { ButtonWrapper, DelSection, EnderecoButton, EnderecoForm, EnderecoSection, ProfileNav, ProfileSection, ProfileWrapper, SectionWrapper, Unc } from "./style"
 import { useHistory } from "react-router-dom"
 import { Endereco } from "../../components/Endereco"
 
@@ -119,7 +119,10 @@ export const Perfil = () => {
                         </ProfileSection>
                         <ProfileSection onSubmit={handleUpdateSubmit}>
                             <label htmlFor="cpf">CPF</label>
-                            <input onChange={(e) => setUpdate({...update, cpf: e.target.value})} type="text" placeholder={data?.cpf}/>
+
+                            <Unc>
+                                <p>{data?.cpf}</p>
+                            </Unc>
 
                             <label htmlFor="telefone">Telefone</label>
                             <input onChange={(e) => setUpdate({...update, telefone: e.target.value})} type="text" placeholder={data?.telefone}/>

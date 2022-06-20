@@ -67,3 +67,10 @@ export const ButtonWrapper = styled.div`
     display: flex;
     gap: 20px;
 `
+
+export const ErrorMsg = styled.div`
+    text-align: center;
+
+    background-color: #ff404080;
+    border-radius: 20px;
+`

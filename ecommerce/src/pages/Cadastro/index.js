@@ -1,12 +1,14 @@
 import { useState } from "react"
 import { useHistory } from "react-router-dom"
 import { API } from "../../services/api"
-import { ButtonWrapper, Form, MainCadastro } from "./style"
+import { ButtonWrapper, ErrorMsg, Form, MainCadastro } from "./style"
 
 export const Cadastro = () => {
     const [section, setSection] = useState(false)
 
     const history = useHistory()
+
+    const [error, setError] = useState()
 
     const [data, setData] = useState({
         username: "",
@@ -25,7 +27,7 @@ export const Cadastro = () => {
             await API.post('/cliente', data)
             history.push('/login')
         } catch (error) {
-            alert(error.response.headers.errormsg)
+            setError(error.response.headers.errormsg)
         }
     }
 
@@ -43,6 +45,12 @@ export const Cadastro = () => {
                     <button onClick={() => setSection(true)}>Avançar</button>
                 </ButtonWrapper>
             </Form>}
+
+
+            {error && section &&
+            <ErrorMsg>
+                <p>{error}</p>
+            </ErrorMsg>}
 
             {section &&
             <Form onSubmit={handleSubmit}>

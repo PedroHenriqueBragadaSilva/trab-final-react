@@ -139,3 +139,10 @@ export const ButtonWrapper = styled.div`
         width: 100%;
     }
 `
+
+export const Unc = styled.div`
+    margin: .5rem 0;
+    padding: 0px 10px;
+    font-size: 0.8rem;
+    border: 1px solid gray;
+`

@@ -1,5 +1,5 @@
 import logo from '../../images/logo.png'
-import { ButtonWrapper, Form, MainLogin } from './style'
+import { ButtonWrapper, ErrorMsg, Form, MainLogin } from './style'
 import { useContext, useState } from 'react'
 import { API } from '../../services/api'
 import { useHistory } from 'react-router-dom'
@@ -10,6 +10,8 @@ export const Login = () => {
         username:'',
         senha:''
     })
+
+    const [error, setError] = useState(false)
 
     const {handleSetToken} = useContext(DataContext)
 
@@ -24,7 +26,7 @@ export const Login = () => {
             localStorage.setItem('Authentication', response.headers.authorization)
             history.push('/')
         } catch (error) {
-            alert('credenciais inválidas')
+            setError(true)
         }
     }
 
@@ -33,6 +35,12 @@ export const Login = () => {
             <img src={logo} alt="" />
 
             <Form onSubmit={handleSubmit}>
+
+                {error &&
+                <ErrorMsg>
+                    <p>Credenciais inválidas</p>
+                </ErrorMsg>}
+
                 <h1>Login</h1>
                 <input onChange={(e) => setLoginData({...loginData, username: e.target.value})} type="text" name="username" placeholder="Username"/>
                 <input onChange={(e) => setLoginData({...loginData, senha: e.target.value})} type="password" name="senha" placeholder="Senha"/>
