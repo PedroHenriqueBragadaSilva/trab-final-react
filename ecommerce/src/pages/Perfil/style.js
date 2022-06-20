@@ -13,11 +13,12 @@ export const ProfileNav = styled.div`
     display: flex;
     flex-direction: column;
     width: 20vw;
-    background-color: gray;
+    background-color: #202122;
 
     button{
         padding: 20px;
-        background-color: gray;
+        background-color: #202122;
+        color: white;
         border: none;
 
         &:hover{
@@ -92,13 +93,17 @@ export const EnderecoSection = styled.div`
 `
 
 export const EnderecoButton = styled.button`
-    width: 100%;
-    height: 6rem;
+        padding: 0.7rem;
+        height: 120px;
+        border: none;
+        border-radius: 20px;
+        background-color: white;
+        box-shadow: 0px 5px 10px #00000099;
 
-    background-color: white;
-    border: 1px solid gray;
-
-    cursor: pointer;
+        &:hover{
+            background-color: #efefef;
+            cursor: pointer;
+        }
 `
 
 export const EnderecoForm = styled.form`

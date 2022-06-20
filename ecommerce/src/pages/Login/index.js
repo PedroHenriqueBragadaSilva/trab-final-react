@@ -1,5 +1,5 @@
 import logo from '../../images/logo.png'
-import { Form, MainLogin } from './style'
+import { ButtonWrapper, Form, MainLogin } from './style'
 import { useContext, useState } from 'react'
 import { API } from '../../services/api'
 import { useHistory } from 'react-router-dom'
@@ -37,7 +37,10 @@ export const Login = () => {
                 <input onChange={(e) => setLoginData({...loginData, username: e.target.value})} type="text" name="username" placeholder="Username"/>
                 <input onChange={(e) => setLoginData({...loginData, senha: e.target.value})} type="password" name="senha" placeholder="Senha"/>
 
-                <button type='submit'>Entrar</button>
+                <ButtonWrapper>
+                    <button onClick={() => history.push('/')} type="button">Cancelar</button>
+                    <button type='submit'>Entrar</button>
+                </ButtonWrapper>
             </Form>
         </MainLogin>
     )

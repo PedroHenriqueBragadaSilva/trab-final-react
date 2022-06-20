@@ -8,4 +8,21 @@ export const Wrapper = styled.div`
     width: 100%;
     padding: 1rem;
     border: 1px solid gray;
+    border-radius: 10px;
+    box-shadow: 0px 5px 5px #00000099;
+    box-sizing: border-box;
+
+    button{
+        margin: 10px;
+        padding: 10px;
+        border-radius: 10px;
+        border: none;
+        box-shadow: 0px 2px 2px #00000099;
+        background-color: #eeeeff;
+        
+        &:hover{
+            cursor: pointer;
+            background-color: #ccccdd;
+        }
+    }
 `

@@ -125,7 +125,7 @@ export const Perfil = () => {
                             <input onChange={(e) => setUpdate({...update, telefone: e.target.value})} type="text" placeholder={data?.telefone}/>
 
                             <label htmlFor="dataNascimento">Data de nascimento</label>
-                            <input onChange={(e) => setUpdate({...update, dataNascimento: e.target.value})} type="date" placeholder=""/>
+                            <input onChange={(e) => setUpdate({...update, dataNascimento: e.target.value})} type="date" placeholder={data?.dataNascimento} />
                             
                             <button type="submit">Atualizar</button>
                         </ProfileSection>
@@ -135,7 +135,7 @@ export const Perfil = () => {
                 {section === 1 &&
                 <EnderecoSection>
                     <h1>Enderecos</h1>
-
+                    
                     {data.enderecos.map(endereco => <Endereco key={endereco.id} id={endereco.id} cep={endereco.cep} onClickDel={() => handleDelEndereco(endereco.id)}/>)}
                     <EnderecoButton onClick={() => setSection(2)}>Adicionar endereço</EnderecoButton>
                 </EnderecoSection>}

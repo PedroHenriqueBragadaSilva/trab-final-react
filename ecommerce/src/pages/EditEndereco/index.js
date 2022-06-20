@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom"
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min"
 import { DataContext } from "../../context/data"
 import { API } from "../../services/api"
+import { ButtonWrapper, Form, Wrapper } from "./style"
 
 export const EditEndereco = () => {
     const {id} = useParams()
@@ -44,15 +45,22 @@ export const EditEndereco = () => {
     }
 
     return (
-        <div>
-            <form onSubmit={handleUpdateEndereco}>
+        <Wrapper>
+            <Form onSubmit={handleUpdateEndereco}>
+                <label>CEP:</label>
                 <input onChange={(e) => setUpdate({...update, cep: e.target.value})} type="text" placeholder={data?.cep}/>
+
+                <label>Número:</label>
                 <input onChange={(e) => setUpdate({...update, numero: e.target.value})} type="text" placeholder={data?.numero} />
+
+                <label>Complemento:</label>
                 <input onChange={(e) => setUpdate({...update, complemento: e.target.value})} type="text" placeholder={data?.complemento} />
 
-                <button>Cancelar</button>
-                <button type="submit">Atualizar</button>
-            </form>
-        </div>
+                <ButtonWrapper>
+                    <button>Cancelar</button>
+                    <button type="submit">Atualizar</button>
+                </ButtonWrapper>
+            </Form>
+        </Wrapper>
     )
 }
