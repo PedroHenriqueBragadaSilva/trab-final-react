@@ -22,6 +22,7 @@ export const Header = () => {
                 <Link to='/'><img src={logo} alt="logo" /></Link>
                 
                 <NavList>
+                    <li><Link to='/abertura'>Sobre</Link></li>
                     <li><Link to='/produtos'>Produtos</Link></li>
                     {!token && <li><Link to='/cadastro'>Cadastro</Link></li>}
                     {!token && <li><Link to={'/login'}>Login</Link></li>}
