@@ -7,7 +7,7 @@ import { DataContext } from "../../context/data"
 import { useHistory } from "react-router-dom"
 
 export const Header = () => {
-    const {token} = useContext(DataContext)
+    const {token, role} = useContext(DataContext)
     const history = useHistory()
 
     const handleLogout = () => {
@@ -26,6 +26,7 @@ export const Header = () => {
                     <li><Link to='/produtos'>Produtos</Link></li>
                     {!token && <li><Link to='/cadastro'>Cadastro</Link></li>}
                     {!token && <li><Link to={'/login'}>Login</Link></li>}
+                    {role === "funcionario" && <li><Link to={'/funcionarios'}>Funcionarios</Link></li>}
                     {token && <li><Link to={'/perfil'}>Perfil</Link></li>}
                     {token && <li><Link to={'/'} onClick={handleLogout}>Logout</Link></li>}
                     <li><Link to={'/carrinho'}><img src={carrinho} alt="carrinho" /></Link></li>

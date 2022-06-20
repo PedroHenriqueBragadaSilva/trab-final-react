@@ -139,8 +139,8 @@ export const Perfil = () => {
                 <EnderecoSection>
                     <h1>Enderecos</h1>
                     
-                    {data.enderecos.map(endereco => <Endereco key={endereco.id} id={endereco.id} cep={endereco.cep} onClickDel={() => handleDelEndereco(endereco.id)}/>)}
                     <EnderecoButton onClick={() => setSection(2)}>Adicionar endereço</EnderecoButton>
+                    {data.enderecos.map(endereco => <Endereco key={endereco.id} id={endereco.id} cep={endereco.cep} onClickDel={() => handleDelEndereco(endereco.id)}/>)}
                 </EnderecoSection>}
 
                 {section === 2 &&

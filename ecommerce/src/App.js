@@ -8,6 +8,9 @@ import { Login } from './pages/Login'
 import Context from './context/data';
 import { Perfil } from './pages/Perfil';
 import { EditEndereco } from './pages/EditEndereco';
+import { Funcionarios } from './pages/Funcionarios';
+import { AddFuncionario } from './pages/AddFuncionario';
+import { EditFuncionario } from './pages/EditFuncionario';
 
 function App() {
   return (
@@ -21,6 +24,9 @@ function App() {
           <Route path='/login' exact component={Login}/>
           <Route path='/perfil' exact component={Perfil}/>
           <Route path='/endereco/:id' exact component={EditEndereco}/>
+          <Route path='/funcionarios' exact component={Funcionarios}/>
+          <Route path='/create/funcionario' exact component={AddFuncionario}/>
+          <Route path='/edit/funcionario/:id' exact component={EditFuncionario}/>
         </Switch>
       </BrowserRouter>
     </Context>
