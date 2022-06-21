@@ -83,10 +83,11 @@ export const Produtos = () => {
                     {catNome &&
                     <CategoriaEsp>
                         <h1>Categoria: {catNome}</h1>
+                        {role === "funcionario" &&
                         <ButtonWrapper>
                             <button onClick={handleDeleteSubmit}>Remover</button>
                             <button onClick={() => handleCatUpdate(catNome)}>Editar</button>
-                        </ButtonWrapper>
+                        </ButtonWrapper>}
                     </CategoriaEsp>}
                     
                     <ProdutosWrapper>
