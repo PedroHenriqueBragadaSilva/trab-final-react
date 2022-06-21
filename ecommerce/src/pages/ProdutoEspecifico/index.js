@@ -17,7 +17,6 @@ export const ProdutoEspecifico = () => {
             try {
                 const response = await API.get(`/produto/${id}`)
                 setData(response.data)
-                console.log(response.data)
             } catch (error) {
                 console.log(error.response.status)
             }
@@ -43,7 +42,6 @@ export const ProdutoEspecifico = () => {
                     <p>R${data?.preco}</p>
                     <p>Quantidade em estoque: {data?.qntEstoque}</p>
                     <button onClick={handleAddCarrinho}>{carrinhoMsg}</button>
-                    {console.log("carrinho: ", carrinho)}
                 </InfoWrapper>
             </Wrapper>
 

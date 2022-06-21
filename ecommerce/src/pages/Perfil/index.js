@@ -5,6 +5,7 @@ import { Header } from "../../components/Header"
 import { ButtonWrapper, DelSection, EnderecoButton, EnderecoForm, EnderecoSection, ProfileNav, ProfileSection, ProfileWrapper, SectionWrapper, Unc } from "./style"
 import { useHistory } from "react-router-dom"
 import { Endereco } from "../../components/Endereco"
+import { Footer } from "../../components/Footer"
 
 export const Perfil = () => {
 
@@ -168,6 +169,8 @@ export const Perfil = () => {
                     <button onClick={handleDeleteSubmit}>Deletar</button>
                 </DelSection>}
             </ProfileWrapper>
+
+            <Footer />
         </div>
     )
 }

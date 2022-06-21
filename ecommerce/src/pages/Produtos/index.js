@@ -3,6 +3,7 @@ import { Header } from "../../components/Header"
 import { API } from "../../services/api"
 import { ProdutoCard } from "../../components/ProdutoCard"
 import { CategoriasWrapper, ProdutosWrapper, Wrapper } from "./style"
+import { Footer } from "../../components/Footer"
 
 export const Produtos = () => {
     const [data, setData] = useState()
@@ -37,12 +38,14 @@ export const Produtos = () => {
             <Wrapper>
                 <CategoriasWrapper>
                     <h2>Categorias</h2>
-                    {categoriaData?.map(categoria => <button>{categoria.nome}</button>)}
+                    {categoriaData?.map(categoria => <button key={categoria.id}>{categoria.nome}</button>)}
                 </CategoriasWrapper>
                 <ProdutosWrapper>
                     {data?.map(produto => <ProdutoCard id={produto.id} key={produto.id} nome={produto.nome} preco={produto.preco} imagem={produto.imagemUrl}/>)}
                 </ProdutosWrapper>
             </Wrapper>
+
+            <Footer />
         </>
     )
 }
