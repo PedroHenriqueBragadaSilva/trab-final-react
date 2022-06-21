@@ -60,6 +60,11 @@ export const Produtos = () => {
         window.location.reload()
     }
 
+    const handleCatUpdate = (catNome) => {
+        const info = categoriaData.filter((item) => item.nome === catNome)
+        history.push(`/categoria/${info[0].id}`)
+    }
+
     return (
         <>
             <Header />
@@ -80,7 +85,7 @@ export const Produtos = () => {
                         <h1>Categoria: {catNome}</h1>
                         <ButtonWrapper>
                             <button onClick={handleDeleteSubmit}>Remover</button>
-                            <button>Editar</button>
+                            <button onClick={() => handleCatUpdate(catNome)}>Editar</button>
                         </ButtonWrapper>
                     </CategoriaEsp>}
                     

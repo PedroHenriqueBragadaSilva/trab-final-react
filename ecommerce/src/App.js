@@ -15,6 +15,7 @@ import { ProdutoEspecifico } from './pages/ProdutoEspecifico';
 import { Carrinho } from './pages/Carrinho';
 import { NotFound } from './pages/NotFound';
 import { CreateCategoria } from './pages/CreateCategoria';
+import { EditCategoria } from './pages/editCategoria';
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
           <Route path='/edit/funcionario/:id' component={EditFuncionario}/>
           <Route path='/produto/:id' component={ProdutoEspecifico}/>
           <Route path='/carrinho' component={Carrinho}/>
+          <Route path='/categoria/:id' component={EditCategoria}/>
           <Route path='/create/categoria' exact component={CreateCategoria}/>
           <Route path="*" component={NotFound}/>
         </Switch>
