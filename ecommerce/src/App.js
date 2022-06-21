@@ -13,6 +13,7 @@ import { AddFuncionario } from './pages/AddFuncionario';
 import { EditFuncionario } from './pages/EditFuncionario';
 import { ProdutoEspecifico } from './pages/ProdutoEspecifico';
 import { Carrinho } from './pages/Carrinho';
+import { NotFound } from './pages/NotFound';
 import { CreateCategoria } from './pages/CreateCategoria';
 
 function App() {
@@ -21,18 +22,19 @@ function App() {
       <BrowserRouter>
         <Switch>
           <Route path='/' exact component={Home}/>
-          <Route path='/abertura' exact component={Abertura}/>
-          <Route path='/produtos' exact component={Produtos}/>
-          <Route path='/cadastro' exact component={Cadastro}/>
-          <Route path='/login' exact component={Login}/>
-          <Route path='/perfil' exact component={Perfil}/>
-          <Route path='/endereco/:id' exact component={EditEndereco}/>
-          <Route path='/funcionarios' exact component={Funcionarios}/>
-          <Route path='/create/funcionario' exact component={AddFuncionario}/>
-          <Route path='/edit/funcionario/:id' exact component={EditFuncionario}/>
-          <Route path='/produto/:id' exact component={ProdutoEspecifico}/>
-          <Route path='/carrinho' exact component={Carrinho}/>
+          <Route path='/abertura' component={Abertura}/>
+          <Route path='/produtos' component={Produtos}/>
+          <Route path='/cadastro' component={Cadastro}/>
+          <Route path='/login' component={Login}/>
+          <Route path='/perfil' component={Perfil}/>
+          <Route path='/endereco/:id' component={EditEndereco}/>
+          <Route path='/funcionarios' component={Funcionarios}/>
+          <Route path='/create/funcionario' component={AddFuncionario}/>
+          <Route path='/edit/funcionario/:id' component={EditFuncionario}/>
+          <Route path='/produto/:id' component={ProdutoEspecifico}/>
+          <Route path='/carrinho' component={Carrinho}/>
           <Route path='/create/categoria' exact component={CreateCategoria}/>
+          <Route path="*" component={NotFound}/>
         </Switch>
       </BrowserRouter>
     </Context>
