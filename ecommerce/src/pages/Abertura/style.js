@@ -15,8 +15,9 @@ export const Text = styled.div`
 `
 export const Imagem = styled.div`
     margin-bottom: 40px;
+    
 
     img{
-        width: 800px;
+        width: 100%;
     }
 `
