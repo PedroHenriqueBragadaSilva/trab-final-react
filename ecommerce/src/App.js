@@ -15,26 +15,28 @@ import { ProdutoEspecifico } from './pages/ProdutoEspecifico';
 import { Carrinho } from './pages/Carrinho';
 import { NotFound } from './pages/NotFound';
 import { CreateCategoria } from './pages/CreateCategoria';
+import { EditCategoria } from './pages/editCategoria';
 
 function App() {
   return (
     <Context>
       <BrowserRouter>
         <Switch>
-          <Route path='/' exact component={Home} />
-          <Route path='/abertura' component={Abertura} />
-          <Route path='/produtos' component={Produtos} />
-          <Route path='/cadastro' component={Cadastro} />
-          <Route path='/login' component={Login} />
-          <Route path='/perfil' component={Perfil} />
-          <Route path='/endereco/:id' component={EditEndereco} />
-          <Route path='/funcionarios' component={Funcionarios} />
-          <Route path='/create/funcionario' component={AddFuncionario} />
-          <Route path='/edit/funcionario/:id' component={EditFuncionario} />
-          <Route path='/produto/:id' component={ProdutoEspecifico} />
-          <Route path='/carrinho' component={Carrinho} />
-          <Route path='/create/categoria' exact component={CreateCategoria} />
-          <Route path="*" component={NotFound} />
+          <Route path='/' exact component={Home}/>
+          <Route path='/abertura' component={Abertura}/>
+          <Route path='/produtos' component={Produtos}/>
+          <Route path='/cadastro' component={Cadastro}/>
+          <Route path='/login' component={Login}/>
+          <Route path='/perfil' component={Perfil}/>
+          <Route path='/endereco/:id' component={EditEndereco}/>
+          <Route path='/funcionarios' component={Funcionarios}/>
+          <Route path='/create/funcionario' component={AddFuncionario}/>
+          <Route path='/edit/funcionario/:id' component={EditFuncionario}/>
+          <Route path='/produto/:id' component={ProdutoEspecifico}/>
+          <Route path='/carrinho' component={Carrinho}/>
+          <Route path='/categoria/:id' component={EditCategoria}/>
+          <Route path='/create/categoria' exact component={CreateCategoria}/>
+          <Route path="*" component={NotFound}/>
         </Switch>
       </BrowserRouter>
     </Context>

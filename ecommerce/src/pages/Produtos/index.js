@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react"
 import { Header } from "../../components/Header"
 import { API } from "../../services/api"
 import { ProdutoCard } from "../../components/ProdutoCard"
-import { CategoriasWrapper, ProdutosWrapper, Wrapper } from "./style"
+import { ButtonWrapper, CategoriaEsp, CategoriasWrapper, ProdutoSection, ProdutosWrapper, Wrapper } from "./style"
 import { Footer } from "../../components/Footer"
 import { DataContext } from "../../context/data"
 import { useHistory } from "react-router-dom"
@@ -13,6 +13,8 @@ export const Produtos = () => {
     const [categoriaData, setCategoriaData] = useState()
     const {role} = useContext(DataContext)
     const history = useHistory()
+    const [catNome, setCatNome] = useState()
+    const {token} = useContext(DataContext)
 
     useEffect(() => {
         const getProdutoData = async () => {
@@ -38,7 +40,29 @@ export const Produtos = () => {
     }, [])
 
     const handleCategoria = (nome) => {
-        setDataFilter(data.filter((item) => item.categoriaNome === nome)) 
+        setDataFilter(data.filter((item) => item.categoriaNome === nome))
+        setCatNome(nome)
+    }
+
+    const handleDeleteSubmit = async (e) => {
+        e.preventDefault()
+
+        const delInfo = categoriaData.filter((item) => item.nome === catNome)
+
+        try {
+            await API.delete(`/categoria/${delInfo[0].id}`, {headers: {
+                Authorization: `Bearer ${token}`
+            }})
+        } catch (error) {
+            console.log('erro')
+        }
+
+        window.location.reload()
+    }
+
+    const handleCatUpdate = (catNome) => {
+        const info = categoriaData.filter((item) => item.nome === catNome)
+        history.push(`/categoria/${info[0].id}`)
     }
 
     return (
@@ -48,15 +72,27 @@ export const Produtos = () => {
             <Wrapper>
                 <CategoriasWrapper>
                     <h2>Categorias</h2>
-                    <button onClick={() => setDataFilter(data)}>Todos</button>
+                    <button onClick={() => {setDataFilter(data); setCatNome()}}>Todos</button>
                     {categoriaData?.map(categoria => <button onClick={() => handleCategoria(categoria.nome)} key={categoria.id}>{categoria.nome}</button>)}
                     
                     {role === "funcionario" &&
                     <button onClick={() => history.push("/create/categoria")}>+</button>}
                 </CategoriasWrapper>
-                <ProdutosWrapper>
-                    {dataFilter?.map(produto => <ProdutoCard id={produto.id} key={produto.id} nome={produto.nome} preco={produto.preco} imagem={produto.imagemUrl}/>)}
-                </ProdutosWrapper>
+
+                <ProdutoSection>
+                    {catNome &&
+                    <CategoriaEsp>
+                        <h1>Categoria: {catNome}</h1>
+                        <ButtonWrapper>
+                            <button onClick={handleDeleteSubmit}>Remover</button>
+                            <button onClick={() => handleCatUpdate(catNome)}>Editar</button>
+                        </ButtonWrapper>
+                    </CategoriaEsp>}
+                    
+                    <ProdutosWrapper>
+                        {dataFilter?.map(produto => <ProdutoCard id={produto.id} key={produto.id} nome={produto.nome} preco={produto.preco} imagem={produto.imagemUrl}/>)}
+                    </ProdutosWrapper>
+                </ProdutoSection>
             </Wrapper>
 
             <Footer />
