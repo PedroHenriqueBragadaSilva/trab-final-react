@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import { Header } from "../../components/Header"
 import { API } from "../../services/api"
-import { InfoWrapper, Wrapper } from "./style"
+import { Imagem, InfoWrapper, Wrapper } from "./style"
 import { Footer } from "../../components/Footer"
 import { DataContext } from "../../context/data"
 
@@ -35,7 +35,7 @@ export const ProdutoEspecifico = () => {
             <Header />
             
             <Wrapper>
-                <img src={data?.imagemUrl} alt="" />
+                <Imagem src={data?.imagemUrl} alt=""/>
                 <InfoWrapper>
                     <h1>{data?.nome}</h1>
                     <p>{data?.descricao}</p>

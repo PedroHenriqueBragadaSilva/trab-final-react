@@ -26,3 +26,7 @@ export const InfoWrapper = styled.div`
         }
     }
 `
+
+export const Imagem = styled.img`
+    height: 400px;
+`
