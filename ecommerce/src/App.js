@@ -11,6 +11,7 @@ import { EditEndereco } from './pages/EditEndereco';
 import { Funcionarios } from './pages/Funcionarios';
 import { AddFuncionario } from './pages/AddFuncionario';
 import { EditFuncionario } from './pages/EditFuncionario';
+import { ProdutoEspecifico } from './pages/ProdutoEspecifico';
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
           <Route path='/funcionarios' exact component={Funcionarios}/>
           <Route path='/create/funcionario' exact component={AddFuncionario}/>
           <Route path='/edit/funcionario/:id' exact component={EditFuncionario}/>
+          <Route path='/produto/:id' exact component={ProdutoEspecifico}/>
         </Switch>
       </BrowserRouter>
     </Context>

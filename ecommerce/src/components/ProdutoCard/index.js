@@ -1,8 +1,11 @@
+import { useHistory } from "react-router-dom";
 import { Card as CardContainer, CardBody, CardItem, CardTitle } from "./style";
 
-export const ProdutoCard = ({ imagem, nome, preco }) => {
+export const ProdutoCard = ({ id, imagem, nome, preco }) => {
+  const history = useHistory()
+
   return (
-    <CardContainer>
+    <CardContainer onClick={() => history.push(`/produto/${id}`)}>
       <CardBody>
       <CardItem>
           <img src={imagem} alt="Imagem" />

@@ -12,6 +12,11 @@ export const Card = styled.div`
   padding: 5px 40px;
   border: 1px solid red;
   color: #f1f1f1;
+
+  &:hover{
+    background-color: #eeeeee;
+    cursor: pointer;
+  }
 `;
 
 export const CardBody = styled.div`

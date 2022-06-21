@@ -40,7 +40,7 @@ export const Produtos = () => {
                     {categoriaData?.map(categoria => <button>{categoria.nome}</button>)}
                 </CategoriasWrapper>
                 <ProdutosWrapper>
-                    {data?.map(produto => <ProdutoCard key={produto.id} nome={produto.nome} preco={produto.preco} imagem={produto.imagemUrl}/>)}
+                    {data?.map(produto => <ProdutoCard id={produto.id} key={produto.id} nome={produto.nome} preco={produto.preco} imagem={produto.imagemUrl}/>)}
                 </ProdutosWrapper>
             </Wrapper>
         </>
