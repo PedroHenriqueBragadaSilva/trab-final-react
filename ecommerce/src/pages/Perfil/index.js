@@ -6,6 +6,8 @@ import { ButtonWrapper, DelSection, EnderecoButton, EnderecoForm, EnderecoSectio
 import { useHistory } from "react-router-dom"
 import { Endereco } from "../../components/Endereco"
 import { Footer } from "../../components/Footer"
+import MaskedInputTel from "../../mask/telefone"
+import MaskedInputCEP from "../../mask/cep"
 
 export const Perfil = () => {
 
@@ -126,7 +128,7 @@ export const Perfil = () => {
                             </Unc>
 
                             <label htmlFor="telefone">Telefone</label>
-                            <input onChange={(e) => setUpdate({...update, telefone: e.target.value})} type="text" placeholder={data?.telefone}/>
+                            <MaskedInputTel onChange={(e) => setUpdate({...update, telefone: e.target.value})} type="text" placeholder={data?.telefone}/>
 
                             <label htmlFor="dataNascimento">Data de nascimento</label>
                             <input onChange={(e) => setUpdate({...update, dataNascimento: e.target.value})} type="date" placeholder={data?.dataNascimento} />
@@ -149,7 +151,7 @@ export const Perfil = () => {
                     <h1>Enderecos</h1>
 
                     <EnderecoForm onSubmit={handleCriaEndereco}>
-                        <input onChange={(e) => setEnderecoData({...enderecoData, cep: e.target.value})} type="text" placeholder="CEP"/>
+                        <MaskedInputCEP onChange={(e) => setEnderecoData({...enderecoData, cep: e.target.value})} type="text" placeholder="CEP"/>
 
                         <input onChange={(e) => setEnderecoData({...enderecoData, numero: e.target.value})} type="text" placeholder="Número"/>
                         
