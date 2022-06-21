@@ -14,6 +14,7 @@ export const Produtos = () => {
     const {role} = useContext(DataContext)
     const history = useHistory()
     const [catNome, setCatNome] = useState()
+    const {token} = useContext(DataContext)
 
     useEffect(() => {
         const getProdutoData = async () => {
@@ -43,6 +44,22 @@ export const Produtos = () => {
         setCatNome(nome)
     }
 
+    const handleDeleteSubmit = async (e) => {
+        e.preventDefault()
+
+        const delInfo = categoriaData.filter((item) => item.nome === catNome)
+
+        try {
+            await API.delete(`/categoria/${delInfo[0].id}`, {headers: {
+                Authorization: `Bearer ${token}`
+            }})
+        } catch (error) {
+            console.log('erro')
+        }
+
+        window.location.reload()
+    }
+
     return (
         <>
             <Header />
@@ -61,10 +78,10 @@ export const Produtos = () => {
                     {catNome &&
                     <CategoriaEsp>
                         <h1>Categoria: {catNome}</h1>
-                        {/*<ButtonWrapper>
-                            <button>Remover</button>
+                        <ButtonWrapper>
+                            <button onClick={handleDeleteSubmit}>Remover</button>
                             <button>Editar</button>
-                        </ButtonWrapper>*/}
+                        </ButtonWrapper>
                     </CategoriaEsp>}
                     
                     <ProdutosWrapper>
