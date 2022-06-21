@@ -13,6 +13,7 @@ import { AddFuncionario } from './pages/AddFuncionario';
 import { EditFuncionario } from './pages/EditFuncionario';
 import { ProdutoEspecifico } from './pages/ProdutoEspecifico';
 import { Carrinho } from './pages/Carrinho';
+import { CreateCategoria } from './pages/CreateCategoria';
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
           <Route path='/edit/funcionario/:id' exact component={EditFuncionario}/>
           <Route path='/produto/:id' exact component={ProdutoEspecifico}/>
           <Route path='/carrinho' exact component={Carrinho}/>
+          <Route path='/create/categoria' exact component={CreateCategoria}/>
         </Switch>
       </BrowserRouter>
     </Context>
