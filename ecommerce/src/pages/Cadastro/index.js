@@ -60,7 +60,7 @@ export const Cadastro = () => {
             {section &&
                 <Form onSubmit={handleSubmit}>
                     <input onChange={(e) => setData({ ...data, nome: e.target.value })} type="text" placeholder="Nome" />
-                    <MaskedInputCPF onChange={(e) => setData({ ...data, cpf: (e.target.value) })} />
+                    <MaskedInputCPF onChange={(e) => setData({ ...data, cpf: e.target.value })} />
                     <MaskedInputTel onChange={(e) => setData({ ...data, telefone: e.target.value })} />
                     <input onChange={(e) => setData({ ...data, dataNascimento: e.target.value })} type="date" placeholder="data de nascimento" />
 
