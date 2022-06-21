@@ -7,6 +7,7 @@ import { Footer } from "../../components/Footer"
 
 export const Produtos = () => {
     const [data, setData] = useState()
+    const [dataFilter, setDataFilter] = useState()
     const [categoriaData, setCategoriaData] = useState()
 
     useEffect(() => {
@@ -14,6 +15,7 @@ export const Produtos = () => {
             try {
                 const response = await API.get(`/produto`)
                 setData(response.data)
+                setDataFilter(response.data)
             } catch (error) {
                 console.log(error.response.status)
             }
@@ -31,6 +33,10 @@ export const Produtos = () => {
         getCategoriaData()
     }, [])
 
+    const handleCategoria = (nome) => {
+        setDataFilter(data.filter((item) => item.categoriaNome === nome)) 
+    }
+
     return (
         <>
             <Header />
@@ -38,10 +44,11 @@ export const Produtos = () => {
             <Wrapper>
                 <CategoriasWrapper>
                     <h2>Categorias</h2>
-                    {categoriaData?.map(categoria => <button key={categoria.id}>{categoria.nome}</button>)}
+                    <button onClick={() => setDataFilter(data)}>Todos</button>
+                    {categoriaData?.map(categoria => <button onClick={() => handleCategoria(categoria.nome)} key={categoria.id}>{categoria.nome}</button>)}
                 </CategoriasWrapper>
                 <ProdutosWrapper>
-                    {data?.map(produto => <ProdutoCard id={produto.id} key={produto.id} nome={produto.nome} preco={produto.preco} imagem={produto.imagemUrl}/>)}
+                    {dataFilter?.map(produto => <ProdutoCard id={produto.id} key={produto.id} nome={produto.nome} preco={produto.preco} imagem={produto.imagemUrl}/>)}
                 </ProdutosWrapper>
             </Wrapper>
 
